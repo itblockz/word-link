@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -11,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
   <!-- ===== SPLASH SCREEN ===== -->
@@ -60,8 +62,10 @@
   <!-- ===== RESULT OVERLAY ===== -->
   <div id="screen-result" class="screen result-overlay">
     <div class="result-card">
-      <div id="result-icon" class="result-icon"></div>
-      <div id="result-label" class="result-label"></div>
+      <div class="result-status">
+        <div id="result-icon" class="result-icon"></div>
+        <div id="result-label" class="result-label"></div>
+      </div>
       <div class="result-word-row">
         <span class="result-word-label">คำที่สุ่มมา</span>
         <div id="result-word" class="result-word"></div>
@@ -76,4 +80,5 @@
   <script src="data/nouns.js"></script>
   <script src="main.js"></script>
 </body>
+
 </html>

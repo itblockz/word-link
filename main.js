@@ -51,8 +51,8 @@ function startRound() {
     currentWord = pickWord();
     roundActive = true;
 
-    // Display word
-    currentWordEl.textContent = currentWord;
+    // Display word with auto-resize to fit exactly 1 line
+    renderFittedText(currentWordEl, currentWord);
 
     // Reset button state
     btnAnswer.disabled = false;
@@ -67,6 +67,11 @@ function startRound() {
 }
 
 function pickWord() {
+    // Check for explicit word in URL for testing (e.g., ?word=ทดสอบ)
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('word')) {
+        return params.get('word');
+    }
     return NOUNS[Math.floor(Math.random() * NOUNS.length)];
 }
 
@@ -147,8 +152,8 @@ function showResult(win) {
     resultIconEl.textContent = win ? '✅' : '❌';
     resultLabelEl.textContent = win ? 'ผ่านแล้ว!' : 'หมดเวลา!';
     resultLabelEl.className = 'result-label ' + (win ? 'win' : 'lose');
-    resultWordEl.textContent = currentWord;
     resultWordEl.className = 'result-word ' + (win ? 'win' : 'lose');
+    renderFittedText(resultWordEl, currentWord);
 
     // Trigger icon animation
     resultIconEl.style.animation = 'none';
@@ -163,4 +168,22 @@ function showResult(win) {
 
 function nextRound() {
     startRound();
+}
+
+function renderFittedText(element, text) {
+    element.textContent = text;
+    element.style.fontSize = ''; // Reset to default clamp() size
+
+    requestAnimationFrame(() => {
+        const padX = 10; // Extra safety padding to prevent exact boundary touch
+        const cw = element.clientWidth - padX;
+        const sw = element.scrollWidth;
+
+        if (sw > cw && cw > 0) {
+            // Shrink font-size proportionally
+            const currentSize = parseFloat(window.getComputedStyle(element).fontSize);
+            const newSize = Math.floor(currentSize * (cw / sw));
+            element.style.fontSize = newSize + 'px';
+        }
+    });
 }
