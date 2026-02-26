@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0a0a1a" />
+  <meta name="description" content="เกมต่อคำนามภาษาไทย สุ่มคำนาม ตอบให้ทันเวลา" />
+  <title>ต่อคำ — Word Link</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== SPLASH SCREEN ===== -->
+  <div id="screen-splash" class="screen active">
+    <div class="splash-content">
+      <div class="logo-icon">🔗</div>
+      <h1 class="logo-title">ต่อคำ</h1>
+      <p class="logo-sub">Word Link</p>
+      <p class="splash-desc">สุ่มคำนาม แล้วพูดคำที่เชื่อมกับมัน<br>ให้ทันภายใน <strong>3 วินาที</strong></p>
+      <button id="btn-start" class="btn btn-primary" onclick="startGame()">เริ่มเล่น</button>
+    </div>
+    <div class="splash-bg-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+  </div>
+
+  <!-- ===== GAME SCREEN ===== -->
+  <div id="screen-game" class="screen">
+    <div class="game-layout">
+
+      <!-- Timer ring -->
+      <div class="timer-wrapper">
+        <svg id="timer-svg" viewBox="0 0 120 120" class="timer-svg">
+          <circle class="timer-bg" cx="60" cy="60" r="52" />
+          <circle id="timer-arc" class="timer-arc" cx="60" cy="60" r="52" />
+        </svg>
+        <div id="timer-num" class="timer-num">3</div>
+      </div>
+
+      <!-- Word display -->
+      <div class="word-card">
+        <p class="word-label">คำนาม</p>
+        <div id="current-word" class="current-word">—</div>
+      </div>
+
+      <!-- Answer button -->
+      <button id="btn-answer" class="btn btn-answer" onclick="onAnswer()">
+        <span class="btn-icon">✓</span>
+        <span>ตอบแล้ว!</span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ===== RESULT OVERLAY ===== -->
+  <div id="screen-result" class="screen result-overlay">
+    <div class="result-card">
+      <div id="result-icon" class="result-icon"></div>
+      <div id="result-label" class="result-label"></div>
+      <div class="result-word-row">
+        <span class="result-word-label">คำที่สุ่มมา</span>
+        <div id="result-word" class="result-word"></div>
+      </div>
+      <button id="btn-next" class="btn btn-next" onclick="nextRound()">
+        คำต่อไป <span class="arrow">→</span>
+      </button>
+    </div>
+    <div class="result-bg-blur"></div>
+  </div>
+
+  <script src="data/nouns.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
