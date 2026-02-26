@@ -1,4 +1,4 @@
-const NOUNS = [
+const NOUNS_ROYIN = [
     "กก",
     "กกุท",
     "กกุธภัณฑ์",
