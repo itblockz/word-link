@@ -22,6 +22,16 @@
       <h1 class="logo-title">ต่อคำ</h1>
       <p class="logo-sub">Word Link</p>
       <p class="splash-desc">สุ่มคำนาม แล้วพูดคำที่เชื่อมกับมัน<br>ให้ทันภายใน <strong>3 วินาที</strong></p>
+      <div id="setting-freq" class="setting-freq">
+        <label for="freq-limit-select">จำนวนคำศัพท์ที่ใช้ (เรียงตามความถี่)</label>
+        <select id="freq-limit-select" class="freq-select">
+          <option value="100">100 คำแรก (พบบ่อยที่สุด)</option>
+          <option value="300">300 คำแรก</option>
+          <option value="500">500 คำแรก</option>
+          <option value="1000">1,000 คำแรก</option>
+          <option value="all" selected>ทั้งหมด (ประมาณ 1,400 คำ)</option>
+        </select>
+      </div>
       <button id="btn-start" class="btn btn-primary" onclick="startGame()">เริ่มเล่น</button>
     </div>
     <div class="splash-bg-orbs">
@@ -77,12 +87,7 @@
     <div class="result-bg-blur"></div>
   </div>
 
-  <script src="data/config.js"></script>
-  <script src="data/nouns_royin.js"></script>
-  <script src="data/nouns_wiktionary.js"></script>
-  <script src="data/nouns_lst20.js"></script>
-  <script src="data/nouns_lst20_proper.js"></script>
-  <script src="data/nouns_intersect.js"></script>
+  <script src="data/nouns.js"></script>
   <script src="main.js"></script>
 </body>
 

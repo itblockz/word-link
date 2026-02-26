@@ -1,4 +1,4 @@
-/* global NOUNS_ROYIN, NOUNS_WIKTIONARY, NOUNS_LST20, NOUNS_LST20_PROPER, NOUNS_INTERSECT, ACTIVE_DATASET */
+/* global NOUNS */
 
 // ─── State ───────────────────────────────────────────────
 const TIMER_SECONDS = 3;
@@ -67,13 +67,12 @@ function startRound() {
 }
 
 function getActiveNouns() {
-    if (typeof ACTIVE_DATASET !== 'undefined') {
-        if (ACTIVE_DATASET === 'intersect') return NOUNS_INTERSECT;
-        if (ACTIVE_DATASET === 'lst20') return NOUNS_LST20;
-        if (ACTIVE_DATASET === 'lst20_proper') return NOUNS_LST20_PROPER;
-        if (ACTIVE_DATASET === 'wiktionary') return NOUNS_WIKTIONARY;
+    const limitSelect = document.getElementById('freq-limit-select');
+    if (limitSelect && limitSelect.value !== 'all') {
+        const limit = parseInt(limitSelect.value, 10);
+        return NOUNS.slice(0, Math.min(limit, NOUNS.length));
     }
-    return NOUNS_ROYIN; // default: royin
+    return NOUNS;
 }
 
 function pickWord() {

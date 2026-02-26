@@ -150,6 +150,50 @@ body {
 }
 
 /* =========================================
+   SETTINGS
+   ========================================= */
+.setting-freq {
+  margin-top: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 20px;
+  width: 100%;
+  max-width: 320px;
+  text-align: left;
+}
+
+.setting-freq label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.freq-select {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.freq-select:focus {
+  border-color: var(--accent-from);
+}
+
+.freq-select option {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* =========================================
    BUTTONS
    ========================================= */
 .btn {
