@@ -6,5 +6,6 @@
 //   'wiktionary'   → คำศัพท์จาก Wiktionary หมวดคำนามภาษาไทย
 //   'lst20'        → คำนามทั่วไป จาก LST20 Corpus (~13,500 คำ)
 //   'lst20_proper' → คำนามเฉพาะ (ชื่อคน สถานที่ องค์กร) จาก LST20 Corpus (~28,300 คำ)
+//   'intersect'    → คำนามที่พบบ่อย (จุดตัดจากหลายชุดข้อมูล)
 
-const ACTIVE_DATASET = 'lst20';
+const ACTIVE_DATASET = 'intersect';

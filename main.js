@@ -1,4 +1,4 @@
-/* global NOUNS_ROYIN, NOUNS_WIKTIONARY, NOUNS_LST20, NOUNS_LST20_PROPER, ACTIVE_DATASET */
+/* global NOUNS_ROYIN, NOUNS_WIKTIONARY, NOUNS_LST20, NOUNS_LST20_PROPER, NOUNS_INTERSECT, ACTIVE_DATASET */
 
 // ─── State ───────────────────────────────────────────────
 const TIMER_SECONDS = 3;
@@ -68,6 +68,7 @@ function startRound() {
 
 function getActiveNouns() {
     if (typeof ACTIVE_DATASET !== 'undefined') {
+        if (ACTIVE_DATASET === 'intersect') return NOUNS_INTERSECT;
         if (ACTIVE_DATASET === 'lst20') return NOUNS_LST20;
         if (ACTIVE_DATASET === 'lst20_proper') return NOUNS_LST20_PROPER;
         if (ACTIVE_DATASET === 'wiktionary') return NOUNS_WIKTIONARY;
