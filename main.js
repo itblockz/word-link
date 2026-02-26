@@ -1,4 +1,4 @@
-/* global NOUNS */
+/* global NOUNS, NOUNS_WIKTIONARY, ACTIVE_DATASET */
 
 // ─── State ───────────────────────────────────────────────
 const TIMER_SECONDS = 3;
@@ -66,13 +66,23 @@ function startRound() {
     startTimer();
 }
 
+function getActiveNouns() {
+    if (typeof ACTIVE_DATASET !== 'undefined' && ACTIVE_DATASET === 'wiktionary') {
+        return NOUNS_WIKTIONARY;
+    }
+    return NOUNS; // default: royin
+}
+
 function pickWord() {
     // Check for explicit word in URL for testing (e.g., ?word=ทดสอบ)
     const params = new URLSearchParams(window.location.search);
     if (params.has('word')) {
         return params.get('word');
     }
-    return NOUNS[Math.floor(Math.random() * NOUNS.length)];
+
+    // Choose list based on config
+    const list = getActiveNouns();
+    return list[Math.floor(Math.random() * list.length)];
 }
 
 // ─── Timer ───────────────────────────────────────────────
